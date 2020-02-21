@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
-# this is used as ENTRYPOINT in docker file, 
-# that means this is what runs when docker 
-# starts the container.
-# We will run any commands passed in
-# or start some daemon proces.
-# Add it to the Dockerfile (at the end) like this:
+# this is used as ENTRYPOINT in Dockerfile
+# that means this is what runs when docker starts the container.
+# We will run any commands passed in or start some daemon proces.
+# Add it to the end of a Dockerfile:
 ## ADD start-container.sh /usr/bin/start-container
 ## RUN chmod +x /usr/bin/start-container
 ## ENTRYPOINT ["start-container"]
