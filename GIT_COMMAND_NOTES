@@ -1,25 +1,19 @@
-## to add your code to github.com:
-  git init
-  git add ./*
-  git commit -a
-  git remote add origin git@github.com:<repo_name>
-  git push -u origin master
-
-## to pull a repo from github:
-mkdir repo_name
-cd repo_name
-git init
-git fetch --tags --progress git@github.com:jonathan-dale/name.git
-git remote add origin git@github.com:jonathan-dale/name.git
-git pull
-git checkout <branch_name> # if using mac use the -b flag
-
-
 
 ## usefull commands
 git reset HEAD .
 git status
 git diff
 git config remote.origin.url git@github.com:<repo_name>/<repo_name>.git
+git branch -a #show branches or $ git show-branch -[a:r] 
+
+
+
+mkdir name
+cd name
+git init
+git remote add origin git@github.com:jonathan-dale/name.git
+git fetch git@github.com:jonathan-dale/name.git
+git pull origin master
+git checkout <branch_name> #use -b on mac
 
 
