@@ -24,7 +24,7 @@ function usage {
 
   cat<<-EOF
 
-	USAGE: $SCRIPT START_VALUE FINAL_VALUE ACTION[+:-]
+	USAGE: $SCRIPT START_VALUE END_VALUE ACTION[+:-]
 
 	This script will start counting at the value START_VALUE and continue to END_VALUE 
 	using either addition or subtraction for the value of ACTION.
