@@ -1,18 +1,57 @@
 #!/usr/bin/env bash
 
-## Usage: clapper.bash [start|stop] 
-## Start - starts all ec2 instances with tag 'Clapper:Yes'
-## Stop  - stopps all ec2 instances with tag 'Clapper:Yes'
-
-## designed to be run as cron job 
-## The valid values for instance-state-code:
-## 0 (pending), 16 (running), 32 (shutting-down), 48 (terminated), 64 (stopping), and 80 (stopped)
+####  designed to be run as cron job 
+####  The valid values for instance-state-code:
+####  0 (pending), 16 (running), 32 (shutting-down), 48 (terminated), 64 (stopping), and 80 (stopped)
 
 
-## optional functions: getAllRunning; getAllStopped; getAllTagClapper; listAllTagClapper; listAllRunningTagClapper; listAllStoppedTagClapper
+
+function abort {
+  EXIT_VAL="$?"
+  echo "ERROR: Failed to execute '$BASH_COMMAND', line: ${BASH_LINENO[0]}"
+  exit "$EXIT_VAL"
+}
 
 
-ENDPOINT_URL="https://ec2.us-iso-east-1.c2s.ic.gov"
+function usage {
+  EXIT_VAL="${1:-0}"
+  MESS="$2"
+  [[ -z $MESS ]] || echo -e 1>&2 "$MESS\n"
+  SCRIPT="$(basename $0)"
+
+
+  cat<<-EOF
+
+
+
+        Usage: $SCRIPT start|stop [OPTIONAL-FUNCTIONS]
+
+
+           Usage:  $SCRIPT [start|stop]
+           Start - starts all ec2 instances with tag 'Clapper:Yes'
+           Stop  - stops all ec2 instances with tag 'Clapper:Yes'
+
+
+           OPTIONAL-FUNCTIONS:
+           getAllRunning                returns json of all running ec2-instances meta data in this account
+           getAllStopped                returns json of all stopped ec2-instances meta data in this account
+           listAllTagClapper            returns instance id of all ec2-instances with tag 'Clapper:Yes'
+           listAllRunningTagClapper     returns instance ID's of all running ec2-instances tagged 'Clapper:Yes'
+           listAllStoppedTagClapper     returns instance ID's of all stopped ec2-instances tagged 'Clapper:Yes'
+
+
+
+
+        EOF
+
+exit "$EXIT_VAL"
+
+}
+
+trap abort ERR
+
+
+ENDPOINT_URL="https://ec2.us-iso-east-1....." # what ever your proxy uses
 
 function getAllRunning {
 	aws ec2 describe-instances --endpoint-url $ENDPOINT_URL --ca-bundle /etc/pki/tls/cert.pem --filter Name=instance-state-code,Values=16
