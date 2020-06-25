@@ -12,8 +12,17 @@ git rebase -i
 git commit --amend --reset-author
 git rebase --continue
 git push
+---
+# change author
+to edit your configuration file:
 
+    git config --global --edit
 
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+---
 
 mkdir name
 cd name
