@@ -18,9 +18,7 @@ function die {
 function usage {
   EXIT_VAL="${1:-0}"
   MESS="$2"
-
-#  [[ -z "$MESS" ]] || echo -e 1>&2 "$MESS\n"
-#  SCRIPT="$(basename $0)"
+  SCTIPT="$(basename $0)"
 
   cat<<-EOF
 
@@ -32,11 +30,12 @@ function usage {
 
 	EOF
 
+
   [[ -z "$MESS" ]] || echo -e 1>&2 "$MESS\n"
-  SCTIPT="$(basename $0)"
 
   exit "$EXIT_VAL" 
 }
+
 
 trap abort ERR
 
