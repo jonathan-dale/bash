@@ -2,7 +2,7 @@
 
 function abort {
   EXIT_VAL="$?"
-  echo "ERROR: failed to execute '$BASH_COMMAND', line ${BASH_LINENO[0]}"
+  echo "ERROR: "$EXIT_VAL" occurred, failed to execute '$BASH_COMMAND', line ${BASH_LINENO[0]}"
   exit "$EXIT_VAL"
 }
 
