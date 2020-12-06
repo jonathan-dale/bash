@@ -53,7 +53,8 @@ function usage {
   exit "$EXIT_VAL" 
 }
 
-
+AMIROOT=`id -u`
+[[ $AMIROOT == 0 ]] && die "should not be root when you run this"
 
 [[ "$#" -ne 0 ]] || usage 1 "Must pass in some argument, anything will do..."
 FIRST_ARG="$1"
