@@ -21,7 +21,7 @@ function info {
 	echo '[INFO]['$DIFF'] ' "$@"
 }
 
-
+#Stop execution on any error, call abort, include message
 trap abort ERR
 
 START_TIME=`date +%M%S`
