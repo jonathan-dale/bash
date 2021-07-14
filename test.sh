@@ -1,20 +1,6 @@
 #!/bin/bash
 
-function abort {
-  EXIT_VAL="$?"
-  echo "ERROR: failed to execute '$BASH_COMMAND', line ${BASH_LINENO[0]}"
-  exit "$EXIT_VAL"
-}
-
-
-
-function die {
-  MESS="$1"
-  EXIT_VAL="${2:-1}"
-  echo 1>&2 "$MESS"
-  exit "$EXIT_VAL"
-}
-
+source abort_die_info.bash
 
 
 function usage {
@@ -67,7 +53,7 @@ shift $((OPTIND -1))
 TEST_DIR=/home/desktop/tmp/dogs
 
 # this one checks for TEST-DIR
-[[ -d "$TEST_DIR" ]] || usage 1 "ERROR:   $TEST_DIR not found, create the dir first"
+[[ -d "$TEST_DIR" ]] || usage 1 "ERROR:   $TEST_DIR not found, create $TEST_DIR first"
 
 
 # original WORKS

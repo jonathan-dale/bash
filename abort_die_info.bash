@@ -2,7 +2,7 @@
 
 abort() {
 	EXIT_VAL="$?"
-	echo "ABORT ERROR: exit code $EXIT_VAL occured, failed to execute '$BASH_COMMAND' on line '${BASH_LINENO[0]}' "
+	echo "ABORT ERROR: exit code $EXIT_VAL occurred, failed to execute '$BASH_COMMAND' on line '${BASH_LINENO[0]}' "
 	exit "$EXIT_VAL"
 }
 
@@ -27,5 +27,7 @@ trap abort ERR
 
 START_TIME=`date +%M%S`
 
-AM_I_ROOT=`id -u`
-[[ "$AM_I_ROOT" == 0 ]] || die "must be root to run this script..."
+
+## Only if the user needs to be root
+# AM_I_ROOT=`id -u`
+# [[ "$AM_I_ROOT" == 0 ]] || die "must be root to run this script..."
