@@ -4,6 +4,8 @@ This is a repo with various bash scripts and other usefull functions for server 
 ##### Use the standard error handeling functions in a seperate file to keep shell files clean 
 ```bash
 wget https://raw.githubusercontent.com/jonathan-dale/bash/master/abort_die_info.bash
+```
+```bash
 curl https://raw.githubusercontent.com/jonathan-dale/bash/master/abort_die_info.bash > abort_die_info.bash
 ```
 
